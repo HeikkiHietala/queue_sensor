@@ -11,8 +11,8 @@ try:
     import machine
     import json
     
-    SSID = "moaiwlan" #SSID="hh3dlabs"
-    PASSWORD = "Ossi1Paavo234" #PASSWORD="3dlabshh12345" 
+    SSID = "your_SSID" 
+    PASSWORD = "your_password"  
     port=100
     wlan=None
     s=None
