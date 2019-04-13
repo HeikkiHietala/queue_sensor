@@ -1,5 +1,3 @@
-
-
 try:
     from time import sleep_ms, ticks_ms
     from machine import I2C, Pin, DAC, PWM
@@ -35,7 +33,6 @@ try:
     mySensor4 = HCSR04(trigger_pin = 26, echo_pin = 5)
     mySensor5 = HCSR04(trigger_pin = 25, echo_pin = 18)
     
-    #mySensorBaseAvg = (mySensor1.distance_cm() + mySensor2.distance_cm() + mySensor3.distance_cm()) /3
     mySensorBaseAvg = 270 ##REMEMBER TO SET TO ACTUAL VALUE!
     
     for x in range(9):
@@ -74,7 +71,7 @@ try:
         sleep_ms(1000) #hold on for 1 second
         lcd.move_to(0, 0) #move cursor to top left corner
         lcd.putstr("Connected      ") #write the string to LCD, note the blanks to erase the previous message
-        url = "http://www.sabulo.com/canteen.php"
+        url = "your_PHP_file_for_handling_input"
         headers = {'content-type': 'application/json'}
         data = {'message': 'Boot sequence complete with canteen-5-final.py'}
         jsonObj = json.dumps(data)
@@ -155,7 +152,7 @@ try:
         minuteCounter += 1
         if (minuteCounter % 60 == 0):
           try:
-            url = "http://www.sabulo.com/canteen.php"
+            url = "your_PHP_file_for_handling_input"
             headers = {'content-type': 'application/json'}
             data = {'message': myQueueStatus + " " + myQueueSensorData + " " +myQueueSensorDist }
             jsonObj = json.dumps(data)
@@ -171,7 +168,7 @@ try:
     main()
     
 except Exception as e:
-    url = "http://www.sabulo.com/canteen.php"
+    url = "your_PHP_file_for_handling_input"
     headers = {'content-type': 'application/json'}
     data = {'message': str(e)}
     jsonObj = json.dumps(data)
